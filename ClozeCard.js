@@ -1,11 +1,15 @@
 
 function ClozeCard(text, cloze) {
 	//cloze deleted part of text
-	this.cloze = cloze;
-	this.text = text;
-	if (this.text.includes(this.cloze) === false) {
-		console.log("cloze not found");
-		return;
+	if (this instanceof ClozeCard) {
+		this.cloze = cloze;
+		this.text = text;
+		if (this.text.includes(this.cloze) === false) {
+			console.log("cloze not found");
+			return;
+		}
+	} else {
+		return new ClozeCard(text, cloze);
 	}
 }
 
@@ -17,7 +21,7 @@ ClozeCard.prototype.partial = function() {
 };
 
 
-var firstPresidentCloze = new ClozeCard(
+var firstPresidentCloze = ClozeCard(
     "George Washington was the first president of the United States.", "George Washington");
 
 // "George Washington"
@@ -31,7 +35,7 @@ firstPresidentCloze.partial();
 console.log(firstPresidentCloze.text);
 
 // Should throw or log an error because "oops" doesn't appear in "This doesn't work"
-var brokenCloze = new ClozeCard("This doesn't work", "oops");
+var brokenCloze = ClozeCard("This doesn't work", "oops");
 
 
 module.exports = ClozeCard;
