@@ -1,33 +1,36 @@
 var Flashcards = require("./flashcards.js")
 var Quiz = require("./quiz.js");
 var inquirer = require("inquirer");
-var fs = require("fs");
+
 
 mainMenu();
 //when this file is run, ask user what they want to do
 function mainMenu() {
+	//create variables for accessing Quiz and Flashcards & pass mainMenu to callback
 	var myQuiz = new Quiz(mainMenu);
 	var myFlashcards = new Flashcards(mainMenu);
+	//find out if user wants to run quiz or create cards
 	inquirer.prompt([
 	  {
 	    type: "list",
-		message: "Would you like to create a basic flashcard, create a cloze-deleted flashcard, or take a quiz? Select one.",
+		message: "What would you like to do? Select one: ",
 		name: "list",
-		choices: ['Basic', 'Cloze', 'Quiz', 'Exit']
+		choices: ['Create Basic Flashcards', 'Create Cloze-Deleted Flashcards', 'Take a Quiz', 'Exit']
 	  }
-	 //run one of 3 functions based on users answer
+	 //run one of 3 functions based on users answer, or quit app
 	]).then(function(answers) {
-		if (answers.list === 'Basic') {
+		if (answers.list === 'Create Basic Flashcards') {
 			myFlashcards.createBasic();
-		} else if (answers.list === 'Cloze') {
+		} else if (answers.list === 'Create Cloze-Deleted Flashcards') {
 			myFlashcards.createCloze();
-		} else if (answers.list === 'Quiz') {
+		} else if (answers.list === 'Take a Quiz') {
 			myQuiz.runQuiz();
+			//option to return(quit) if user is done with program
 		} else if (answers.list === 'Exit') {
 			console.log('GOODBYE!'); 
 			return;
 		} else {
-			console.log("FAIL!"); //probably not even possible
+			console.log("FAIL!"); //this condition should never be reached
 		}
 
 	});

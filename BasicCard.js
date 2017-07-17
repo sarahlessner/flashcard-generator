@@ -8,6 +8,14 @@ function BasicCard(front, back) {
 	}
 };
 
+BasicCard.prototype.getAnswer = function() {
+	return this.back;
+};
+
+BasicCard.prototype.getQuestion = function(){	
+	return this.front;
+};
+
 BasicCard.prototype.checkAnswer = function(answer){	
 	return (this.back.toLowerCase() === answer.toLowerCase());
 };

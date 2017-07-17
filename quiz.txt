@@ -1,3 +1,7 @@
-Cloze,undefined,undefined
 Cloze,griz is a good puppy dog,griz
 Cloze,manny is a good kitty cat,manny
+Basic,who is the best puppy in the united states of america?,GRIZ
+Basic,where am i?,space
+Basic,who am I?,sarah
+Cloze,sarah is the best developer ever,sarah
+Cloze,jon is good at robots,robots
