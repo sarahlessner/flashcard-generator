@@ -1,0 +1,3 @@
+Cloze,undefined,undefined
+Cloze,griz is a good puppy dog,griz
+Cloze,manny is a good kitty cat,manny
