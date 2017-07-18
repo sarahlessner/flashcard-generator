@@ -1,4 +1,4 @@
-
+//constructor for cloze card
 function ClozeCard(text, cloze) {
 	//cloze deleted part of text
 	if (this instanceof ClozeCard) {
@@ -10,6 +10,7 @@ function ClozeCard(text, cloze) {
 		}
 		this.partial = this.text.replace(this.cloze, '...');
 	} else {
+		//for scope safe constructor
 		return new ClozeCard(text, cloze);
 	}
 };

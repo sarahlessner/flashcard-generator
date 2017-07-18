@@ -7,47 +7,44 @@ var fs = require("fs");
 var Quiz = function(callback) {
 	//callback for main menu in cli.js
 	this.myCallback = callback;
+	//to call this within this.
 	var self = this;
+	//array will store cards created from text file
 	var quizArray = [];	
+	//initiates quiz by reading card data from quiz.txt and pushing to array
 	this.runQuiz = function() {
 	
 		fs.readFile("quiz.txt", "utf8", function(error, data) {
 			if (error) {
 				return console.log(error);
 			}
-			console.log(data);
+			// console.log(data);
+			//define card by line break
 			var cards = data.split('\n');
+			//for each flashcard entry in the log
 			for (var i = 0; i < cards.length-1; i++) {
+				//split content of individual flashcard - 0 card type & 1-2 args
 				var fields = cards[i].split(',');
-				console.log(fields[0]);
-				console.log(fields[1], fields[2]);
+				//make a new basic card using constructor
 				if (fields[0] === 'Basic') {
-					console.log('push basic');
+					//create new flashcard & pass arguments - push to array
 					quizArray.push(new BasicCard(fields[1], fields[2]));
-
+				//make a new cloze card using constructor
 				} else if (fields[0] === 'Cloze') {
-					console.log('push cloze');
-					var newCard = new ClozeCard(fields[1], fields[2]);
-					quizArray.push(newCard);
+					//create new flashcard & pass arguments - push to array
+					quizArray.push(new ClozeCard(fields[1], fields[2]));
 				}
 			}
-			console.log(quizArray.length);
+			//call flashcard and pass 0 as argument for index
 			self.flashcard(0);
 			
 		});
 		
 	};
 	this.flashcard = function(index) {
+		//loop through quiz array 
 		if (index < quizArray.length) {
-			/*
-			if(quizArray[index] instanceof BasicCard)
-				console.log("I'm a BasicCard");
-			else if(quizArray[index] instanceof ClozeCard)
-				console.log("I'm a ClozeCard");
-			else
-				console.log("We have a problem");
-			*/
-
+			//use inquirer to display flashcard front or partial
 			inquirer.prompt([
 			  {
 			    name: 'answer',
@@ -55,24 +52,27 @@ var Quiz = function(callback) {
 			  }
 
 			]).then(function(answers) {
+				//check user input with checkAnswer method
 				var correct = quizArray[index].checkAnswer(answers.answer);
 				if (correct) {
 					console.log("Correct!");
 				} else {
 					console.log("Incorrect!");
 				}
+				//display answer after correct/incorrect message
 				 console.log(quizArray[index].getAnswer());
+				 //increment index & call flashcard again
 				 self.flashcard(index+1);
 			});
 			
-
+		//when all flashcards have been displayed in the prompt
 		} else {
-			console.log("No more questions! Take the quiz again or create more flashcards.");
+			console.log("No more questions!");
+			//callback to mainMenu()
 			self.myCallback();
 		}
 	};
 };
-
 
 
 module.exports = Quiz;

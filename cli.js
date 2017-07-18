@@ -6,7 +6,7 @@ var inquirer = require("inquirer");
 mainMenu();
 //when this file is run, ask user what they want to do
 function mainMenu() {
-	//create variables for accessing Quiz and Flashcards & pass mainMenu to callback
+	//create variables for accessing Quiz and Flashcards & pass callback so user can return to main menu
 	var myQuiz = new Quiz(mainMenu);
 	var myFlashcards = new Flashcards(mainMenu);
 	//find out if user wants to run quiz or create cards

@@ -1,4 +1,4 @@
-
+//constructor for basic card
 function BasicCard(front, back) {
 	if (this instanceof BasicCard) {
 		this.front = front;
