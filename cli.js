@@ -1,5 +1,5 @@
-var Flashcards = require("./flashcards.js")
-var Quiz = require("./quiz.js");
+var Flashcards = require("./flashcards")
+var Quiz = require("./quiz");
 var inquirer = require("inquirer");
 
 
@@ -19,6 +19,7 @@ function mainMenu() {
 	  }
 	 //run one of 3 functions based on users answer, or quit app
 	]).then(function(answers) {
+
 		if (answers.list === 'Create Basic Flashcards') {
 			myFlashcards.createBasic();
 		} else if (answers.list === 'Create Cloze-Deleted Flashcards') {

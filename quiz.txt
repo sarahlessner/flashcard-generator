@@ -1,18 +1,8 @@
-Cloze,griz is a good puppy dog,griz
-Cloze,manny is a good kitty cat,manny
-Basic,who is the best puppy in the united states of america?,GRIZ
-Basic,where am i?,space
-Basic,who am I?,sarah
-Cloze,sarah is the best developer ever,sarah
-Cloze,jon is good at robots,robots
-Basic,who was the president before this hot mess?,obama
-Cloze,Cats have 9 lives,9
-Cloze,in the superbowl they play football,football
-Cloze,in the playoffs they play basketball,basketball
-Cloze,in the world series they play baseball,baseball
-Cloze,in traffic yellow light means slow,slow
-Cloze,in traffic green light means go,go
-Basic,n,n
-Basic,Who was the first President?,George Washington
-Basic,Who is the best German Shepherd ever?,Griz
-Cloze,Griz is the best puppy ever,Griz
+
+Basic,What color does the sky usually appear to be?,Blue
+Basic,What color is grass?,Green
+Basic,Which dog breed takes down bad dudes?,German Shepherd
+Cloze,Griz is the best puppy in the universe.,Griz
+Cloze,My favorite color is purple,purple
+Cloze,Coffee is a popular morning drink that wakes you up.,Coffee
+Basic,What do caterpillars turn into?,butterflies
