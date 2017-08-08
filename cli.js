@@ -1,4 +1,4 @@
-var Flashcards = require("./flashcards")
+var Flashcards = require("./flashcards");
 var Quiz = require("./quiz");
 var inquirer = require("inquirer");
 
@@ -21,7 +21,7 @@ function mainMenu() {
 	]).then(function(answers) {
 
 		if (answers.list === 'Create Basic Flashcards') {
-			myFlashcards.createBasic();
+			myFlashcards.createBasic();vs
 		} else if (answers.list === 'Create Cloze-Deleted Flashcards') {
 			myFlashcards.createCloze();
 		} else if (answers.list === 'Take a Quiz') {
