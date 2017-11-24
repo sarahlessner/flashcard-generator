@@ -10,10 +10,10 @@ var Quiz = function(callback) {
 	//to call this within this.
 	var self = this;
 	//array will store cards created from text file
-	var quizArray = [];	
+	var quizArray = [];
 	//initiates quiz by reading card data from quiz.txt and pushing to array
 	this.runQuiz = function() {
-	
+
 		fs.readFile("quiz.txt", "utf8", function(error, data) {
 			if (error) {
 				return console.log(error);
@@ -37,20 +37,19 @@ var Quiz = function(callback) {
 			}
 			//call flashcard and pass 0 as argument for index
 			self.flashcard(0);
-			
+
 		});
-		
+
 	};
 	this.flashcard = function(index) {
-		//loop through quiz array 
+		//loop through quiz array
 		if (index < quizArray.length) {
 			//use inquirer to display flashcard front or partial
 			inquirer.prompt([
 			  {
-			    name: 'answer',
+			  name: 'answer',
 				message: quizArray[index].getQuestion()
 			  }
-
 			]).then(function(answers) {
 				//check user input with checkAnswer method
 				var correct = quizArray[index].checkAnswer(answers.answer);
@@ -64,7 +63,7 @@ var Quiz = function(callback) {
 				 //increment index & call flashcard again
 				 self.flashcard(index+1);
 			});
-			
+
 		//when all flashcards have been displayed in the prompt
 		} else {
 			console.log("No more questions!");

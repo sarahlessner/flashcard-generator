@@ -19,16 +19,12 @@ ClozeCard.prototype.getAnswer = function() {
 	return this.text;
 };
 
-ClozeCard.prototype.getQuestion = function(){	
+ClozeCard.prototype.getQuestion = function(){
 	return this.partial;
 };
 
-ClozeCard.prototype.checkAnswer = function(answer){	
+ClozeCard.prototype.checkAnswer = function(answer){
 	return (this.cloze.toLowerCase() === answer.toLowerCase());
 };
 
-
-	
-
 module.exports = ClozeCard;
-

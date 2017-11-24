@@ -19,27 +19,12 @@ var Flashcards = function(callback) {
 		name: "back",
 		message: "Enter the Answer: "
 		}
-		]).then(function(answers) {	
+		]).then(function(answers) {
 			//log type of card and answers to quiz.txt
 			logFlashCards("Basic"+","+answers.front+","+answers.back+"\n");
 			//ask if user wants to create another flashcard
 			self.anotherCard('basic');
-			// inquirer.prompt([
-			// {
-			// type: "confirm",
-			// message: "Create another flashcard?",
-			// name: "anotherBasic",
-			// default: true
-			// }
-			// ]).then(function(answers) {
-			// 	if (answers.anotherBasic) {
-			// 		//if they want to make another flashcard
-			// 		self.createBasic();
-			// 	} else {
-			// 		//if they select 'n' this will execute "mainMenu" function in cli.js
-			// 		self.myCallback();
-			// 	}
-			// });
+
 		});
 	};
 	//function to get input necessary for making cloze flashcard and logging to quiz file
@@ -53,27 +38,12 @@ var Flashcards = function(callback) {
 		name: "cloze",
 		message: "Enter the portion of the text to be cloze-deleted: "
 		}
-		]).then(function(answers) {	
+		]).then(function(answers) {
 			//log type of card and answers to quiz.txt
 			logFlashCards("Cloze"+","+answers.text+","+answers.cloze+"\n");
 			//ask if user wants to create another flashcard
 			self.anotherCard('cloze');
-			// inquirer.prompt([
-			// {
-			// type: "confirm",
-			// message: "Create another flashcard?",
-			// name: "anotherCloze",
-			// default: true
-			// }
-			// ]).then(function(answers) {
-			// 	//if they want to make another flashcard
-			// 	if (answers.anotherCloze) {
-			// 		self.createCloze();
-			// 	} else {
-			// 		//if they select 'n' this will execute "mainMenu function in cli.js"
-			// 		self.myCallback();
-			// 	}
-			// });
+
 		});
 	};
 
@@ -94,7 +64,7 @@ var Flashcards = function(callback) {
 				 self.createCloze();
 				} else {
 					self.createBasic();
-				} 
+				}
 			} else {
 				//if they select 'n' this will execute "mainMenu function in cli.js"
 				self.myCallback();
@@ -103,14 +73,13 @@ var Flashcards = function(callback) {
 	};
 };
 
-
 //function to log user input to file which will be used to create flashcards
 logFlashCards = function(card) {
 	fs.appendFile("quiz.txt",card, function(err) {
 		if (err) {
 			return console.log(err);
-			}
-		});
+		}
+	});
 };
 
 module.exports = Flashcards;
